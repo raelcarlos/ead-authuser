@@ -20,6 +20,8 @@ public class UserDto {
         public static interface PasswordPut {}
         public static interface ImagePut {}
     }
+    // cada interface representa uma possível diferente forma de enxergar o userDTO
+    // cada uma será utilizada por um endpoint específico
 
     private UUID userId;
 
@@ -28,6 +30,7 @@ public class UserDto {
     @UsernameConstraint(groups = UserView.RegistrationPost.class)
     @JsonView(UserView.RegistrationPost.class)
     private String username;
+    // como especifiquei que username tem a view RegistrationPost, isso significa que ele só poderá ser usado no momento do registro do usuário.
 
     @NotBlank(groups = UserView.RegistrationPost.class)
     @Email(groups = UserView.RegistrationPost.class)
